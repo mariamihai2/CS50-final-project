@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Draw
+{% endblock %}
+
+{% block main %}
+
+    <div class="studio">
+
+        <div class="toolbar">
+
+            <div class="tool-group" role="group" aria-label="Drawing tools">
+                <button type="button" id="pencil-btn" class="tool-btn active" data-tool="pencil" title="Paintbrush">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 20c1-3 1-5 3-7l9-9 3 3-9 9c-2 2-4 2-7 3-1 .3-1.3 0-1-1z" fill="#ea433b" stroke="#7a1f1b" stroke-width="1.2" stroke-linejoin="round"/>
+                        <path d="M15 5l3-3 3 3-3 3z" fill="#bf6b99" stroke="#7a1f1b" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                    Brush
+                </button>
+                <button type="button" id="eraser-btn" class="tool-btn" data-tool="eraser" title="Eraser">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="14" height="8" rx="1.5" transform="rotate(-15 12 14)" fill="#f5b82e" stroke="#8a5a00" stroke-width="1.2"/>
+                        <rect x="5" y="10" width="14" height="4" rx="1" transform="rotate(-15 12 14)" fill="#fff6e0" stroke="#8a5a00" stroke-width="1"/>
+                    </svg>
+                    Eraser
+                </button>
+            </div>
+
+            <label class="color-swatch">
+                <span class="visually-hidden">Color</span>
+                <input type="color" id="colorPicker" value="#000000">
+            </label>
+
+            <button type="button" id="clear-btn" class="btn btn-outline-secondary btn-sm">Clear canvas</button>
+
+            <a href="/download" class="btn btn-primary btn-sm">Download drawing</a>
+
+        </div>
+
+        <div id="board-wrapper">
+            <div id="board" style="grid-template-columns: repeat({{ board_size }}, {{ pixel_size }}px); grid-template-rows: repeat({{ board_size }}, {{ pixel_size }}px);">
+                {% for row in grid %}
+                    {% for cell in row %}
+                        <div class="pixel" data-x="{{ cell.x }}" data-y="{{ cell.y }}" style="background-color: {{ cell.color }};"></div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

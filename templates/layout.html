@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.3/ -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+        <title>Artistry: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><span class="pink">C</span><span class="red">$</span><span class="yellow">5</span><span class="green">0</span> <span class="red">Artistry</span></a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav me-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/">Draw</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+
+        <!-- Floating icon that follows the cursor while a tool is active -->
+        <div id="cursor-icon" aria-hidden="true"></div>
+
+        <footer class="mb-4 text-center text-muted small">
+            Built for CS50 &middot; polished for personal use
+        </footer>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    </body>
+
+</html>
